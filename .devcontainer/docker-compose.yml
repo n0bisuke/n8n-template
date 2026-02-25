@@ -1,9 +1,16 @@
 version: '3.8'
 
 services:
+  # 開発環境（VS Codeが接続する側）
+  app:
+    image: mcr.microsoft.com/devcontainers/base:ubuntu
+    volumes:
+      - ..:/workspaces:cached
+    command: sleep infinity
+
+  # n8n（サイドカーとして動作）
   n8n:
     image: docker.n8n.io/n8nio/n8n
-    container_name: n8n
     restart: always
     ports:
       - "5678:5678"
@@ -11,8 +18,7 @@ services:
       - n8n_data:/home/node/.n8n
     environment:
       - N8N_PORT=5678
-      # Codespacesで動かす場合、CSRFエラーを避けるために以下が必要になることがあります
-      - N8N_SECURE_COOKIE=false 
+      - N8N_SECURE_COOKIE=false
 
 volumes:
   n8n_data:
