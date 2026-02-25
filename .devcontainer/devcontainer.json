@@ -1,0 +1,7 @@
+{
+  "name": "n8n-devcontainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "n8n",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [5678]
+}
