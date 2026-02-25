@@ -1,7 +1,12 @@
 {
-  "name": "n8n-devcontainer",
+  "name": "n8n Development Environment",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "n8n",
-  "workspaceFolder": "/workspace",
-  "forwardPorts": [5678]
+  "service": "app", // ここを開発用コンテナにする
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [5678],
+  "customizations": {
+    "codespaces": {
+      "openExternalPortsInBrowser": true
+    }
+  }
 }
