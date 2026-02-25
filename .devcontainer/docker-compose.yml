@@ -19,6 +19,11 @@ services:
     environment:
       - N8N_PORT=5678
       - N8N_SECURE_COOKIE=false
+      - N8N_DISABLE_UI_SESSION_TIMEOUT=true
+      # 以下の3つが接続維持に非常に重要です
+      - N8N_PUSH_BACKEND=websocket
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=https://${CODESPACE_NAME}-5678.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}/
 
 volumes:
   n8n_data:
